@@ -26,32 +26,44 @@ The dataset contained over 8600 rows of individual user data containing:
 
 ## File Directory / Table of Contents
 
-1. Data folder
-    - original_data
-        * super_scrape.csv
-        * truth_scrape.csv
-    - cleaned_data
-        * clean_data.csv
-        * selftext_custom_preprocessed.csv
-        * selftext_preprocessed.csv
-2. Code folder
-    - 01_data_collection
-        * subreddit_scrape_Super.csv
-        * subreddit_scrape_Truth.csv
-    - 02_data_cleaning
-        * combine_subreddits.ipynb
-    - 03_eda
-        * eda_truth.ipynb
-    - 04_modeling
-        * 01_refined_models.ipynb
-        * 02_custom_preprocessed_base_model.ipynb
+* Data folder (hosted on *GoogleDrive*) [Data Files Linked Here](https://drive.google.com/drive/folders/1RkWZeHrV45Ydn2tLBo6uvypJGlOrlHY4?usp=sharing)
+    - original
+        * mbti_1.csv
+    - cleaned
+        * mbti_v5.csv
+        * expanded_mbti_df.csv
+        * custom_stopwords.txt
+        * df_cv_feat_lemma.pkl
+        * df_tf_feat_lemma.pkl
+        * countvect_matrix_lemma.npz
+        * tfidf_matrix_lemma.npz
+        * mbti_no_stop_pos_tag_with_sums.csv
+        * mbti_pos_tag_df.csv
+1. Code folder
+    - 01_cleaning
+        * 1_cleaning_process_mbti.ipynb
+        * 2_generate_df_features_vecttext.ipynb
+        * 3_generate_pos_tag_features.ipynb
+        * 4_generate_vectorized_matrices.ipynb
+        * 5_generate_ngrams_logreg.ipynb
+        * 6_generate_ngrams_SVC.ipynb
+    - 02_eda
+        * 1_eda.ipynb
+        * 2_eda.ipynb
+        * 3_eda.ipynb
+    - 03_models
+        * 1_keras_final.ipynb
+        * 2_keras_E_I.ipynb
+        * 3_keras_F_T.ipynb
 3. Presentation folder
-    - Reddit_presentation.pdf
+    - capstone_presentation.pdf
 4. Images folder
     - contains image files displayed by README.md
-4. Scratch folder
-    - Files contained are non-deliverables and not to be used for aassignment evaluation.
-
+    * workflow_diagrams
+        * capstone_model_builds.png
+        * capstone_model_results.png
+        * capstone_workflow.png
+        * refined_capstone_workflow.png
 <br><br>
 
 ## Data Section: 
@@ -97,18 +109,18 @@ Null models, creating classification predictions based on *most frequent* classi
     - P : 0.39585
 
 ### Recurrent Neural Networking Model
-A recurrent neural network model was developed that took advantage of the keras tokenizer and word embedder functionalities.  These functions were applied to the cleaned post text, which was then passed through a series of hidden layers as outlined in [the final keras model notebook](models/final_keras_model.ipynb).
+A recurrent neural network model was developed that took advantage of the keras tokenizer and word embedder functionalities.  These functions were applied to the cleaned post text, which was then passed through a series of hidden layers as outlined in [the final keras model notebook](code/3_models/1_keras_final.ipynb).
 
 When considering if an individual was one or the other of the two personality options considered under each of the four personality types, for example whether a person was an Introvert (I) or an Extrovert(E), the final model was able to classify an individual's personality type within each category at accuracy levels exceeding those of the null model.
 
 
-![png](kmodel_ei.png)
+![png](images/kmodel_ei.png)
 
-![png](kmodel_ft.png)
+![png](images/kmodel_ft.png)
 
-![png](kmodel_ns.png)
+![png](images/kmodel_ns.png)
 
-![png](kmodel_jp.png)
+![png](images/kmodel_jp.png)
 
 
 ### Summarized Results
